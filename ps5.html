@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ps5</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="ps5_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ps5_files/libs/quarto-html/quarto.js"></script>
+<script src="ps5_files/libs/quarto-html/popper.min.js"></script>
+<script src="ps5_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="ps5_files/libs/quarto-html/anchor.min.js"></script>
+<link href="ps5_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ps5_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="ps5_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="ps5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="ps5_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+quarto preview /Users/suyuanfang/Desktop/Pyhton/ps5/ps5_template.qmd –no-browser –no-watch-inputs— title: “title” author: “author” date: “date” format: html: default pdf: include-in-header: text: |
+<p>include-before-body: text: | output: echo: false eval: false</p>
+<hr>
+<p><strong>Due 11/9 at 5:00PM Central. Worth 100 points + 10 points extra credit.</strong></p>
+<section id="submission-steps-10-pts" class="level2">
+<h2 class="anchored" data-anchor-id="submission-steps-10-pts">Submission Steps (10 pts)</h2>
+<ol type="1">
+<li>This problem set is a paired problem set.</li>
+<li>Play paper, scissors, rock to determine who goes first. Call that person <em>Partner 1</em>.
+<ul>
+<li>Partner 1 (name and cnet ID): Suyuan Fang - suyuanfang</li>
+<li>Partner 2 (name and cnet ID): Jiaxuan nie - Jnie21</li>
+</ul></li>
+<li>Partner 1 will accept the <code>ps5</code> and then share the link it creates with their partner. You can only share it with one partner so you will not be able to change it after your partner has accepted.</li>
+<li>“This submission is our work alone and complies with the 30538 integrity policy.” Add your initials to indicate your agreement: SF JN</li>
+<li>“I have uploaded the names of anyone else other than my partner and I worked with on the problem set <strong><a href="https://docs.google.com/forms/d/185usrCREQaUbvAXpWhChkjghdGgmAZXA3lPWpXLLsts/edit">yes</a></strong>” (1 point)</li>
+<li>Late coins used this pset:1 Late coins left after submission:1</li>
+<li>Knit your <code>ps5.qmd</code> to an PDF file to make <code>ps5.pdf</code>,
+<ul>
+<li>The PDF should not be more than 25 pages. Use <code>head()</code> and re-size figures when appropriate.</li>
+</ul></li>
+<li>(Partner 1): push <code>ps5.qmd</code> and <code>ps5.pdf</code> to your github repo.</li>
+<li>(Partner 1): submit <code>ps5.pdf</code> via Gradescope. Add your partner on Gradescope.</li>
+<li>(Partner 1): tag your submission in Gradescope</li>
+</ol>
+<div id="e0856f07" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>alt.renderers.enable(<span class="st">"png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>RendererRegistry.enable('png')</code></pre>
+</div>
+</div>
+</section>
+<section id="step-1-develop-initial-scraper-and-crawler" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-develop-initial-scraper-and-crawler">Step 1: Develop initial scraper and crawler</h2>
+<section id="scraping-partner-1" class="level3">
+<h3 class="anchored" data-anchor-id="scraping-partner-1">1. Scraping (PARTNER 1)</h3>
+<div id="52e817d7" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://oig.hhs.gov/fraud/enforcement/"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">'html.parser'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> action <span class="kw">in</span> soup.select(<span class="st">"li.usa-card"</span>):</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> action.select_one(<span class="st">"h2.usa-card__heading a"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    link <span class="op">=</span> <span class="st">"https://oig.hhs.gov"</span> <span class="op">+</span> action.select_one(<span class="st">"h2.usa-card__heading a"</span>)[<span class="st">"href"</span>]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    date <span class="op">=</span> action.select_one(<span class="st">"span.text-base-dark.padding-right-105"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    category <span class="op">=</span> action.select_one(<span class="st">"ul.display-inline.add-list-reset li"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    data.append({</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Title"</span>: title,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Date"</span>: date,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Category"</span>: category,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Link"</span>: link</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>save_path <span class="op">=</span> <span class="st">"/Users/suyuanfang/Desktop/Pyhton/ps5/enforcement_actions.csv"</span>  </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>df.to_csv(save_path, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                               Title              Date  \
+0  Pharmacist and Brother Convicted of $15M Medic...  November 8, 2024   
+1  Boise Nurse Practitioner Sentenced To 48 Month...  November 7, 2024   
+2  Former Traveling Nurse Pleads Guilty To Tamper...  November 7, 2024   
+3  Former Arlington Resident Sentenced To Prison ...  November 7, 2024   
+4  Paroled Felon Sentenced To Six Years For Fraud...  November 7, 2024   
+
+                     Category  \
+0  Criminal and Civil Actions   
+1  Criminal and Civil Actions   
+2  Criminal and Civil Actions   
+3  Criminal and Civil Actions   
+4  Criminal and Civil Actions   
+
+                                                Link  
+0  https://oig.hhs.gov/fraud/enforcement/pharmaci...  
+1  https://oig.hhs.gov/fraud/enforcement/boise-nu...  
+2  https://oig.hhs.gov/fraud/enforcement/former-t...  
+3  https://oig.hhs.gov/fraud/enforcement/former-a...  
+4  https://oig.hhs.gov/fraud/enforcement/paroled-...  </code></pre>
+</div>
+</div>
+</section>
+<section id="crawling-partner-1" class="level3">
+<h3 class="anchored" data-anchor-id="crawling-partner-1">2. Crawling (PARTNER 1)</h3>
+<div id="4675fcd3" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://oig.hhs.gov/fraud/enforcement/"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">'html.parser'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data_update <span class="op">=</span> []</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> action <span class="kw">in</span> soup.select(<span class="st">"li.usa-card"</span>):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> action.select_one(<span class="st">"h2.usa-card__heading a"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    link <span class="op">=</span> <span class="st">"https://oig.hhs.gov"</span> <span class="op">+</span> action.select_one(<span class="st">"h2.usa-card__heading a"</span>)[<span class="st">"href"</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    date <span class="op">=</span> action.select_one(<span class="st">"span.text-base-dark.padding-right-105"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    category <span class="op">=</span> action.select_one(<span class="st">"ul.display-inline.add-list-reset li"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    detail_response <span class="op">=</span> requests.get(link)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    detail_soup <span class="op">=</span> BeautifulSoup(detail_response.text, <span class="st">'html.parser'</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    spans <span class="op">=</span> detail_soup.select(<span class="st">"span.padding-right-2.text-base"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    agency <span class="op">=</span> spans[<span class="dv">1</span>].find_parent(<span class="st">"li"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>).replace(<span class="st">"Agency:"</span>, <span class="st">""</span>).strip() <span class="cf">if</span> <span class="bu">len</span>(spans) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">"Agency Not Found"</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    data_update.append({</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Title"</span>: title,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Date"</span>: date,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Category"</span>: category,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Link"</span>: link,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Agency"</span>: agency</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data_update)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>save_path <span class="op">=</span> <span class="st">"/Users/suyuanfang/Desktop/Pyhton/ps5/enforcement_actions_update.csv"</span>  </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>df.to_csv(save_path, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                               Title              Date  \
+0  Pharmacist and Brother Convicted of $15M Medic...  November 8, 2024   
+1  Boise Nurse Practitioner Sentenced To 48 Month...  November 7, 2024   
+2  Former Traveling Nurse Pleads Guilty To Tamper...  November 7, 2024   
+3  Former Arlington Resident Sentenced To Prison ...  November 7, 2024   
+4  Paroled Felon Sentenced To Six Years For Fraud...  November 7, 2024   
+
+                     Category  \
+0  Criminal and Civil Actions   
+1  Criminal and Civil Actions   
+2  Criminal and Civil Actions   
+3  Criminal and Civil Actions   
+4  Criminal and Civil Actions   
+
+                                                Link  \
+0  https://oig.hhs.gov/fraud/enforcement/pharmaci...   
+1  https://oig.hhs.gov/fraud/enforcement/boise-nu...   
+2  https://oig.hhs.gov/fraud/enforcement/former-t...   
+3  https://oig.hhs.gov/fraud/enforcement/former-a...   
+4  https://oig.hhs.gov/fraud/enforcement/paroled-...   
+
+                                              Agency  
+0                         U.S. Department of Justice  
+1  November 7, 2024; U.S. Attorney's Office, Dist...  
+2  U.S. Attorney's Office, District of Massachusetts  
+3  U.S. Attorney's Office, Eastern District of Vi...  
+4  U.S. Attorney's Office, Middle District of Flo...  </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="step-2-making-the-scraper-dynamic" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-making-the-scraper-dynamic">Step 2: Making the scraper dynamic</h2>
+<section id="turning-the-scraper-into-a-function" class="level3">
+<h3 class="anchored" data-anchor-id="turning-the-scraper-into-a-function">1. Turning the scraper into a function</h3>
+<ul>
+<li><ol type="a">
+<li>Pseudo-Code (PARTNER 2) Function scrape_enforcement_actions(start_date): Initialize an empty list to store results Set the current page number to 1 Set base URL for the enforcement actions page</li>
+</ol>
+<p>WHILE True: Construct the URL for the current page using the base URL and the page number Make a request to the URL and retrieve the HTML content Parse the HTML content to find enforcement action entries</p>
+<pre><code>  IF there are no enforcement action entries on this page:
+      Break the loop (no more pages to scrape)
+
+  FOR each action entry in the page:
+      Extract the title, link, date, and category
+      Convert the date of the action to a datetime object
+
+      IF action date is older than start_date:
+          Continue to the next page (skip this entry if it's before the target date)
+
+      Make a request to the detail page using the link to get additional information
+      Parse the detail page to find the agency name
+      Append all extracted data (title, date, category, link, agency) to results list
+
+  Wait 1 second to avoid too frequent requests
+  Increment the page number to go to the next page</code></pre>
+<p>Convert results list to a DataFrame Save DataFrame to a CSV file with the start date in the file name Print a message indicating the data has been saved</p></li>
+<li><ol start="2" type="a">
+<li>Create Dynamic Scraper (PARTNER 2)</li>
+</ol></li>
+</ul>
+<div id="1772ee7d" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scrape_enforcement_actions(year, month):</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> year <span class="op">&lt;</span> <span class="dv">2013</span>:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Please set the year to 2013 or later, as only enforcement actions from 2013 onwards are listed."</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    target_date <span class="op">=</span> datetime(year, month, <span class="dv">1</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    today <span class="op">=</span> datetime.today()</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> []</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    page <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="st">"https://oig.hhs.gov/fraud/enforcement/"</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    stop_scraping <span class="op">=</span> <span class="va">False</span> </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="kw">not</span> stop_scraping:</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_url<span class="sc">}</span><span class="ss">?page=</span><span class="sc">{</span>page<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(url)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> BeautifulSoup(response.text, <span class="st">'html.parser'</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        actions <span class="op">=</span> soup.select(<span class="st">"li.usa-card"</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> actions:</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"No more data, stopping scraping."</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> action <span class="kw">in</span> actions:</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>            title <span class="op">=</span> action.select_one(<span class="st">"h2.usa-card__heading a"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>            link <span class="op">=</span> <span class="st">"https://oig.hhs.gov"</span> <span class="op">+</span> action.select_one(<span class="st">"h2.usa-card__heading a"</span>)[<span class="st">"href"</span>]</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>            date_text <span class="op">=</span> action.select_one(<span class="st">"span.text-base-dark.padding-right-105"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>            action_date <span class="op">=</span> datetime.strptime(date_text, <span class="st">"%B </span><span class="sc">%d</span><span class="st">, %Y"</span>)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> action_date <span class="op">&lt;</span> target_date:</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"Reached data prior to the target date (Target Date: </span><span class="sc">{</span>target_date<span class="sc">}</span><span class="ss">). Stopping scraping."</span>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>                stop_scraping <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span> </span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>            category <span class="op">=</span> action.select_one(<span class="st">"ul.display-inline.add-list-reset li"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>            detail_response <span class="op">=</span> requests.get(link)</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>            detail_soup <span class="op">=</span> BeautifulSoup(detail_response.text, <span class="st">'html.parser'</span>)</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>            spans <span class="op">=</span> detail_soup.select(<span class="st">"span.padding-right-2.text-base"</span>)</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>            agency <span class="op">=</span> spans[<span class="dv">1</span>].find_parent(<span class="st">"li"</span>).get_text(strip<span class="op">=</span><span class="va">True</span>).replace(<span class="st">"Agency:"</span>, <span class="st">""</span>).strip() <span class="cf">if</span> <span class="bu">len</span>(spans) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">"Agency Not Found"</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>            data.append({</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Title"</span>: title,</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Date"</span>: date_text,</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Category"</span>: category,</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Link"</span>: link,</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Agency"</span>: agency</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> stop_scraping:</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="dv">1</span>)</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>        page <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>    save_path <span class="op">=</span> <span class="ss">f"/Users/suyuanfang/Desktop/Pyhton/ps5/enforcement_actions_</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>month<span class="sc">}</span><span class="ss">.csv"</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>    df.to_csv(save_path, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><ol start="3" type="a">
+<li>Test Partner’s Code (PARTNER 1)</li>
+</ol></li>
+</ul>
+<div id="f47bc236" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#scrape_enforcement_actions(2021, 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="377789b3" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/Users/suyuanfang/Desktop/Pyhton/ps5/enforcement_actions_2021_1.csv'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">"%B </span><span class="sc">%d</span><span class="st">, %Y"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>num_enforcement_actions <span class="op">=</span> df.shape[<span class="dv">0</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>earliest_action <span class="op">=</span> df.sort_values(<span class="st">"Date"</span>).iloc[<span class="dv">0</span>]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>num_enforcement_actions, earliest_action.to_dict()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>(3022,
+ {'Title': 'The United States And Tennessee Resolve Claims With Three Providers For False Claims Act Liability Relating To ‘P-Stim’ Devices For A Total Of $1.72 Million',
+  'Date': Timestamp('2021-01-04 00:00:00'),
+  'Category': 'Criminal and Civil Actions',
+  'Link': 'https://oig.hhs.gov/fraud/enforcement/the-united-states-and-tennessee-resolve-claims-with-three-providers-for-false-claims-act-liability-relating-to-p-stim-devices-for-a-total-of-172-million/',
+  'Agency': "U.S. Attorney's Office, Middle District of Tennessee"})</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="step-3-plot-data-based-on-scraped-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-plot-data-based-on-scraped-data">Step 3: Plot data based on scraped data</h2>
+<section id="plot-the-number-of-enforcement-actions-over-time-partner-2" class="level3">
+<h3 class="anchored" data-anchor-id="plot-the-number-of-enforcement-actions-over-time-partner-2">1. Plot the number of enforcement actions over time (PARTNER 2)</h3>
+<div id="c8ff0979" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'YearMonth'</span>] <span class="op">=</span> df[<span class="st">'Date'</span>].dt.to_period(<span class="st">'M'</span>).dt.to_timestamp() </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>monthly_counts <span class="op">=</span> df.groupby(<span class="st">'YearMonth'</span>).size().reset_index(name<span class="op">=</span><span class="st">'Counts'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.Chart(monthly_counts).mark_line(point<span class="op">=</span><span class="va">True</span>).encode(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'YearMonth:T'</span>, title<span class="op">=</span><span class="st">'Month-Year'</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'Counts'</span>, title<span class="op">=</span><span class="st">'Number of Enforcement Actions'</span>),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'YearMonth'</span>, <span class="st">'Counts'</span>]</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Number of Enforcement Actions Over Time (Monthly Aggregation)'</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">800</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">400</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>).interactive()  </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>chart.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ps5_files/figure-html/cell-8-output-1.png" width="845" height="464" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-number-of-enforcement-actions-categorized-partner-1" class="level3">
+<h3 class="anchored" data-anchor-id="plot-the-number-of-enforcement-actions-categorized-partner-1">2. Plot the number of enforcement actions categorized: (PARTNER 1)</h3>
+<ul>
+<li>based on “Criminal and Civil Actions” vs.&nbsp;“State Enforcement Agencies”</li>
+</ul>
+<div id="75b8ebdc" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df[df[<span class="st">'Category'</span>].isin([<span class="st">'Criminal and Civil Actions'</span>, <span class="st">'State Enforcement Agencies'</span>])]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>filtered_category_monthly_counts <span class="op">=</span> filtered_df.groupby([<span class="st">'YearMonth'</span>, <span class="st">'Category'</span>]).size().reset_index(name<span class="op">=</span><span class="st">'Counts'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>chart_filtered_category <span class="op">=</span> alt.Chart(filtered_category_monthly_counts).mark_line(point<span class="op">=</span><span class="va">True</span>).encode(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'YearMonth:T'</span>, title<span class="op">=</span><span class="st">'Month-Year'</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'Counts'</span>, title<span class="op">=</span><span class="st">'Number of Enforcement Actions'</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'Category:N'</span>,  </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'YearMonth'</span>, <span class="st">'Category'</span>, <span class="st">'Counts'</span>]</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Enforcement Actions: 'Criminal and Civil Actions' vs 'State Enforcement Agencies'"</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">800</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">400</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>).interactive() </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>chart_filtered_category</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+<figure class="figure">
+<p><img src="ps5_files/figure-html/cell-9-output-1.png" width="1005" height="464" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>based on five topics</li>
+</ul>
+<div id="7451fc0c" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> categorize_topic(title):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> title.lower()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"health"</span> <span class="kw">in</span> title <span class="kw">or</span> <span class="st">"care"</span> <span class="kw">in</span> title:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Health Care Fraud"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">"financial"</span> <span class="kw">in</span> title <span class="kw">or</span> <span class="st">"bank"</span> <span class="kw">in</span> title <span class="kw">or</span> <span class="st">"money"</span> <span class="kw">in</span> title:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Financial Fraud"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">"drug"</span> <span class="kw">in</span> title <span class="kw">or</span> <span class="st">"narcotic"</span> <span class="kw">in</span> title <span class="kw">or</span> <span class="st">"opioid"</span> <span class="kw">in</span> title:</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Drug Enforcement"</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">"bribery"</span> <span class="kw">in</span> title <span class="kw">or</span> <span class="st">"corruption"</span> <span class="kw">in</span> title <span class="kw">or</span> <span class="st">"kickback"</span> <span class="kw">in</span> title:</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Bribery/Corruption"</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Other"</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Topic'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: categorize_topic(row[<span class="st">'Title'</span>]) </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> row[<span class="st">'Category'</span>] <span class="op">==</span> <span class="st">"Criminal and Civil Actions"</span> <span class="cf">else</span> <span class="va">None</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>filtered_topics_df <span class="op">=</span> df[(df[<span class="st">'Category'</span>] <span class="op">==</span> <span class="st">"Criminal and Civil Actions"</span>) <span class="op">&amp;</span> (df[<span class="st">'Topic'</span>].notna())]</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>filtered_topics_df[<span class="st">'YearMonth'</span>] <span class="op">=</span> filtered_topics_df[<span class="st">'Date'</span>].dt.to_period(<span class="st">'M'</span>).dt.to_timestamp()</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>monthly_topic_counts <span class="op">=</span> filtered_topics_df.groupby([<span class="st">'YearMonth'</span>, <span class="st">'Topic'</span>]).size().reset_index(name<span class="op">=</span><span class="st">'Counts'</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>chart_topic_split <span class="op">=</span> alt.Chart(monthly_topic_counts).mark_line(point<span class="op">=</span><span class="va">True</span>).encode(</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'YearMonth:T'</span>, title<span class="op">=</span><span class="st">'Month-Year'</span>),</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'Counts'</span>, title<span class="op">=</span><span class="st">'Number of Enforcement Actions'</span>),</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'Topic:N'</span>,  </span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'YearMonth'</span>, <span class="st">'Topic'</span>, <span class="st">'Counts'</span>]</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Enforcement Actions by Topic in "Criminal and Civil Actions" Category'</span>,</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">800</span>,</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">400</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>).interactive()</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>chart_topic_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+<figure class="figure">
+<p><img src="ps5_files/figure-html/cell-10-output-1.png" width="961" height="464" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="step-4-create-maps-of-enforcement-activity" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-create-maps-of-enforcement-activity">Step 4: Create maps of enforcement activity</h2>
+<section id="map-by-state-partner-1" class="level3">
+<h3 class="anchored" data-anchor-id="map-by-state-partner-1">1. Map by State (PARTNER 1)</h3>
+<div id="84a25da4" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/Users/suyuanfang/Desktop/Pyhton/ps5/enforcement_actions_2021_1.csv'</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>state_actions <span class="op">=</span> df[df[<span class="st">'Agency'</span>].<span class="bu">str</span>.contains(<span class="st">"State of"</span>, na<span class="op">=</span><span class="va">False</span>, case<span class="op">=</span><span class="va">False</span>)]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_state(agency):</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    match <span class="op">=</span> re.search(<span class="vs">r"State of (\w+)"</span>, agency)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> match.group(<span class="dv">1</span>) <span class="cf">if</span> match <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>state_actions[<span class="st">'State'</span>] <span class="op">=</span> state_actions[<span class="st">'Agency'</span>].<span class="bu">apply</span>(extract_state)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>state_counts <span class="op">=</span> state_actions[<span class="st">'State'</span>].value_counts().reset_index()</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>state_counts.columns <span class="op">=</span> [<span class="st">'State'</span>, <span class="st">'Counts'</span>]</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>states_gdf <span class="op">=</span> gpd.read_file(<span class="st">'/Users/suyuanfang/Desktop/Pyhton/ps5/cb_2021_us_state_20m/cb_2021_us_state_20m.shp'</span>) </span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>states_gdf[<span class="st">'STATE_NAME'</span>] <span class="op">=</span> states_gdf[<span class="st">'NAME'</span>].<span class="bu">str</span>.strip()  </span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>merged_gdf <span class="op">=</span> states_gdf.merge(state_counts, left_on<span class="op">=</span><span class="st">'STATE_NAME'</span>, right_on<span class="op">=</span><span class="st">'State'</span>, how<span class="op">=</span><span class="st">'left'</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>geojson_data <span class="op">=</span> merged_gdf.__geo_interface__</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.Chart(alt.Data(values<span class="op">=</span>geojson_data[<span class="st">'features'</span>])).mark_geoshape().encode(</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>alt.Color(<span class="st">'properties.Counts:Q'</span>, scale<span class="op">=</span>alt.Scale(scheme<span class="op">=</span><span class="st">'blues'</span>), title<span class="op">=</span><span class="st">"Enforcement Actions Count"</span>),</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'properties.STATE_NAME:N'</span>, <span class="st">'properties.Counts:Q'</span>]</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">800</span>,</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"State-Level Enforcement Actions by State"</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>).project(</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">type</span><span class="op">=</span><span class="st">'albersUsa'</span> </span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+<figure class="figure">
+<p><img src="ps5_files/figure-html/cell-11-output-1.png" width="974" height="527" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="map-by-district-partner-2" class="level3">
+<h3 class="anchored" data-anchor-id="map-by-district-partner-2">2. Map by District (PARTNER 2)</h3>
+<div id="e777341e" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>district_actions <span class="op">=</span> df[df[<span class="st">'Agency'</span>].<span class="bu">str</span>.contains(<span class="st">"District"</span>, na<span class="op">=</span><span class="va">False</span>, case<span class="op">=</span><span class="va">False</span>)]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_district(agency):</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    match <span class="op">=</span> re.search(<span class="vs">r"District (?:of|for) (.+)"</span>, agency)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> match.group(<span class="dv">1</span>).strip() <span class="cf">if</span> match <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>district_actions[<span class="st">'District'</span>] <span class="op">=</span> district_actions[<span class="st">'Agency'</span>].<span class="bu">apply</span>(extract_district)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>district_counts <span class="op">=</span> district_actions[<span class="st">'District'</span>].value_counts().reset_index()</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>district_counts.columns <span class="op">=</span> [<span class="st">'District'</span>, <span class="st">'Counts'</span>]</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>districts_gdf <span class="op">=</span> gpd.read_file(<span class="st">'/Users/suyuanfang/Desktop/Pyhton/ps5/US Attorney Districts Shapefile simplified_20241109/geo_export_20f1da15-c3cf-4199-9977-259cb99092b8.shp'</span>) </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>districts_gdf[<span class="st">'district_n'</span>] <span class="op">=</span> districts_gdf[<span class="st">'district_n'</span>].<span class="bu">str</span>.strip() </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>merged_gdf <span class="op">=</span> districts_gdf.merge(district_counts, left_on<span class="op">=</span><span class="st">'district_n'</span>, right_on<span class="op">=</span><span class="st">'District'</span>, how<span class="op">=</span><span class="st">'left'</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>geojson_data <span class="op">=</span> merged_gdf.__geo_interface__</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.Chart(alt.Data(values<span class="op">=</span>geojson_data[<span class="st">'features'</span>])).mark_geoshape().encode(</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>alt.Color(<span class="st">'properties.Counts:Q'</span>, scale<span class="op">=</span>alt.Scale(scheme<span class="op">=</span><span class="st">'orangered'</span>), title<span class="op">=</span><span class="st">"Enforcement Actions Count"</span>),</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'properties.DISTRICT_NAME:N'</span>, <span class="st">'properties.Counts:Q'</span>]</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">800</span>,</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"U.S. Attorney District-Level Enforcement Actions"</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>).project(</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">type</span><span class="op">=</span><span class="st">'albersUsa'</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+<figure class="figure">
+<p><img src="ps5_files/figure-html/cell-12-output-1.png" width="974" height="527" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="extra-credit" class="level2">
+<h2 class="anchored" data-anchor-id="extra-credit">Extra Credit</h2>
+<section id="merge-zip-code-shapefile-with-population" class="level3">
+<h3 class="anchored" data-anchor-id="merge-zip-code-shapefile-with-population">1. Merge zip code shapefile with population</h3>
+</section>
+<section id="conduct-spatial-join" class="level3">
+<h3 class="anchored" data-anchor-id="conduct-spatial-join">2. Conduct spatial join</h3>
+</section>
+<section id="map-the-action-ratio-in-each-district" class="level3">
+<h3 class="anchored" data-anchor-id="map-the-action-ratio-in-each-district">3. Map the action ratio in each district</h3>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
